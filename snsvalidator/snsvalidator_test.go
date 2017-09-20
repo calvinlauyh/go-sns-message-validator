@@ -210,6 +210,16 @@ kvCIAouFRHuLo4r9wvF3nUxtWjqfFa6TUfB+xtEalTn3LgKg9mzJ
 
 			So(actual, ShouldBeNil)
 		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the return is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				actual = validator.ValidateMessage()
+
+				So(actual == nil, ShouldBeTrue)
+			})
+		})
 	})
 }
 
@@ -385,6 +395,16 @@ func TestValidateRequiredKeysMethod(t *testing.T) {
 			actual := validator.validateRequiredKeys()
 			So(actual, ShouldBeNil)
 		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the return is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				actual = validator.validateRequiredKeys()
+
+				So(actual == nil, ShouldBeTrue)
+			})
+		})
 	})
 }
 
@@ -445,6 +465,16 @@ func TestValidateMessageTypeMethod(t *testing.T) {
 			actual := validator.validateMessageType()
 
 			So(actual, ShouldBeNil)
+		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the return is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				actual = validator.validateMessageType()
+
+				So(actual == nil, ShouldBeTrue)
+			})
 		})
 	})
 }
@@ -540,6 +570,16 @@ func TestValidateSubscriptionKeysMethod(t *testing.T) {
 			actual := validator.validateSubscriptionKeys()
 
 			So(actual, ShouldBeNil)
+		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the return is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				actual = validator.validateSubscriptionKeys()
+
+				So(actual == nil, ShouldBeTrue)
+			})
 		})
 	})
 }
@@ -668,6 +708,16 @@ func TestValidateMessageStructureMethod(t *testing.T) {
 			actual := validator.validateMessageStructure()
 
 			So(actual, ShouldBeNil)
+		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the return is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				actual = validator.validateMessageStructure()
+
+				So(actual == nil, ShouldBeTrue)
+			})
 		})
 	})
 }
@@ -907,6 +957,16 @@ kvCIAouFRHuLo4r9wvF3nUxtWjqfFa6TUfB+xtEalTn3LgKg9mzJ
 
 			So(actualData, ShouldResemble, []byte(certData))
 			So(actualErr, ShouldBeNil)
+		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the second return value is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				_, actual = validator.getCertificate()
+
+				So(actual == nil, ShouldBeTrue)
+			})
 		})
 	})
 }
@@ -1302,6 +1362,16 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			actual := validator.verifySignature()
 
 			So(actual, ShouldBeNil)
+		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of thereturn value is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				actual = validator.verifySignature()
+
+				So(actual == nil, ShouldBeTrue)
+			})
 		})
 	})
 

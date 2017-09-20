@@ -7,6 +7,14 @@ import (
 	"github.com/yuhlau/go-sns-message-validator/snsvalidator"
 )
 
+// func shouldBeInnerTypeNil(actual interface{}, expected ...interface{}) string {
+//     if <some-important-condition-is-met(actual, expected)> {
+//         return ""   // empty string means the assertion passed
+//     } else {
+//         return "<some descriptive message detailing why the assertion failed...>"
+//     }
+// }
+
 // Message Template
 var NotificationMessage = SNSMessage{
 	Type:             "Notification",
@@ -66,6 +74,16 @@ func TestNewFromJSON(t *testing.T) {
 
 			So(*message, ShouldResemble, expected)
 			So(err, ShouldBeNil)
+		})
+
+		// Details: https://golang.org/doc/faq#nil_error
+		Convey("When the placeholder of the second return value is error-typed", func() {
+			var actual error
+			Convey("It should return an interface value nil", func() {
+				_, actual = NewFromJSON(encoded)
+
+				So(actual == nil, ShouldBeTrue)
+			})
 		})
 	})
 
