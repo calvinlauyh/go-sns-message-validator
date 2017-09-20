@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
+	"github.com/yuhlau/go-sns-message-validator/snserrors"
 	"github.com/yuhlau/go-sns-message-validator/snsvalidator"
 )
 
@@ -94,7 +95,7 @@ func TestNewFromJSON(t *testing.T) {
 			message, err := NewFromJSON(encoded)
 
 			So(message, ShouldBeNil)
-			So(err.Type(), ShouldEqual, ErrMalformedJSON)
+			So(err.(*snserrors.SNSError).Type(), ShouldEqual, ErrMalformedJSON)
 		})
 	})
 

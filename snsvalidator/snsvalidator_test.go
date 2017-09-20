@@ -144,7 +144,7 @@ kvCIAouFRHuLo4r9wvF3nUxtWjqfFa6TUfB+xtEalTn3LgKg9mzJ
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrMissingKey", func() {
-				So(actual.Type(), ShouldEqual, ErrMissingKey)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrMissingKey)
 			})
 			Convey("Returned SNSError message should be about the missing \"Message\" key", func() {
 				So(actual.Error(), ShouldEqual, "\"Message\" is required in SNS message")
@@ -177,7 +177,7 @@ kvCIAouFRHuLo4r9wvF3nUxtWjqfFa6TUfB+xtEalTn3LgKg9mzJ
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 		})
 	})
@@ -365,10 +365,10 @@ func TestValidateRequiredKeysMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrMissingKey", func() {
-				So(actual.Type(), ShouldEqual, ErrMissingKey)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrMissingKey)
 			})
 			Convey("Returned SNSError message should be about the missing \"Message\" key", func() {
-				So(actual.Error(), ShouldEqual, "\"Message\" is required in SNS message")
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, "\"Message\" is required in SNS message")
 			})
 		})
 	})
@@ -434,10 +434,10 @@ func TestValidateMessageTypeMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrInvalidType", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidType)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidType)
 			})
 			Convey("Returned SNSError message should be about the invalid type", func() {
-				So(actual.Error(), ShouldEqual, `Invalid message type "InvalidType"`)
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, `Invalid message type "InvalidType"`)
 			})
 		})
 	})
@@ -505,10 +505,10 @@ func TestValidateSubscriptionKeysMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrMissingKey", func() {
-				So(actual.Type(), ShouldEqual, ErrMissingKey)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrMissingKey)
 			})
 			Convey(`Returned SNSError message should be about the missing "SubscribeURL" key`, func() {
-				So(actual.Error(), ShouldEqual, `"SubscribeURL" is required in Subscription message`)
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, `"SubscribeURL" is required in Subscription message`)
 			})
 		})
 	})
@@ -539,10 +539,10 @@ func TestValidateSubscriptionKeysMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrMissingKey", func() {
-				So(actual.Type(), ShouldEqual, ErrMissingKey)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrMissingKey)
 			})
 			Convey(`Returned SNSError message should be about the missing "Token" key`, func() {
-				So(actual.Error(), ShouldEqual, `"Token" is required in Subscription message`)
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, `"Token" is required in Subscription message`)
 			})
 		})
 	})
@@ -610,10 +610,10 @@ func TestValidateMessageStructureMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrMissingKey", func() {
-				So(actual.Type(), ShouldEqual, ErrMissingKey)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrMissingKey)
 			})
 			Convey(`Returned SNSError message should be about the missing "Message" key`, func() {
-				So(actual.Error(), ShouldEqual, `"Message" is required in SNS message`)
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, `"Message" is required in SNS message`)
 			})
 		})
 	})
@@ -643,10 +643,10 @@ func TestValidateMessageStructureMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrInvalidType", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidType)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidType)
 			})
 			Convey("Returned SNSError message should be about the invalide type", func() {
-				So(actual.Error(), ShouldEqual, `Invalid message type "InvalidType"`)
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, `Invalid message type "InvalidType"`)
 			})
 		})
 	})
@@ -677,10 +677,10 @@ func TestValidateMessageStructureMethod(t *testing.T) {
 			So(actual, ShouldNotBeNil)
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 			Convey("Returned SNSError should be of type ErrMissingKey", func() {
-				So(actual.Type(), ShouldEqual, ErrMissingKey)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrMissingKey)
 			})
 			Convey(`Returned SNSError message should be about the missing "SubscribeURL" key`, func() {
-				So(actual.Error(), ShouldEqual, `"SubscribeURL" is required in Subscription message`)
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, `"SubscribeURL" is required in Subscription message`)
 			})
 		})
 	})
@@ -891,10 +891,10 @@ kvCIAouFRHuLo4r9wvF3nUxtWjqfFa6TUfB+xtEalTn3LgKg9mzJ
 			So(actualErr, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actualErr.Type(), ShouldEqual, ErrInvalidCert)
+				So(actualErr.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 			Convey("Returned SNSError should be about certificate could not be retrieved", func() {
-				So(actualErr.Error(), ShouldEqual, "Could not retrive the certificate")
+				So(actualErr.(*snserrors.SNSError).Error(), ShouldEqual, "Could not retrive the certificate")
 			})
 		})
 	})
@@ -924,7 +924,7 @@ kvCIAouFRHuLo4r9wvF3nUxtWjqfFa6TUfB+xtEalTn3LgKg9mzJ
 			So(actualErr, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actualErr.Type(), ShouldEqual, ErrInvalidCert)
+				So(actualErr.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 		})
 	})
@@ -1049,7 +1049,7 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 		})
 	})
@@ -1079,10 +1079,10 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 			Convey("Returned SNSError should be about insecure HTTP", func() {
-				So(actual.Error(), ShouldEqual, "The certificate URL is using insecure HTTP scheme")
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, "The certificate URL is using insecure HTTP scheme")
 			})
 		})
 	})
@@ -1112,10 +1112,10 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 			Convey("Returned SNSError should be reatled to untrusted host", func() {
-				So(actual.Error(), ShouldEqual, "The certificate URL belongs to an untrusted host")
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, "The certificate URL belongs to an untrusted host")
 			})
 		})
 	})
@@ -1149,10 +1149,10 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 			Convey("Returned SNSError should be about certificate could not be retrieved", func() {
-				So(actual.Error(), ShouldEqual, "Could not retrive the certificate")
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, "Could not retrive the certificate")
 			})
 		})
 	})
@@ -1187,7 +1187,7 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 		})
 	})
@@ -1222,7 +1222,7 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 		})
 	})
@@ -1257,7 +1257,7 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrInvalidCert", func() {
-				So(actual.Type(), ShouldEqual, ErrInvalidCert)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrInvalidCert)
 			})
 		})
 	})
@@ -1292,10 +1292,10 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrIncorrectSignature", func() {
-				So(actual.Type(), ShouldEqual, ErrIncorrectSignature)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrIncorrectSignature)
 			})
 			Convey("Returned SNSError should be about base64 decode error", func() {
-				So(actual.Error(), ShouldEqual, "Could not base64 decode the signature")
+				So(actual.(*snserrors.SNSError).Error(), ShouldEqual, "Could not base64 decode the signature")
 			})
 		})
 	})
@@ -1330,7 +1330,7 @@ MloYDzIwNjcwOTA1MTcwMDUyWjCBvDELMAkGA1UEBhMCSEsxEjAQBgNVBAgMCUhv
 			So(actual, ShouldHaveSameTypeAs, snserrors.New("Type", "Message"))
 
 			Convey("Returned SNSError should be of type ErrIncorrectSignature", func() {
-				So(actual.Type(), ShouldEqual, ErrIncorrectSignature)
+				So(actual.(*snserrors.SNSError).Type(), ShouldEqual, ErrIncorrectSignature)
 			})
 		})
 	})
