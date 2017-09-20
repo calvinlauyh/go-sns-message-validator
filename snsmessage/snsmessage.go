@@ -1,3 +1,5 @@
+// Package snsmessage provides utility to prepare a SNS message to be
+// structural and ready for validation.
 package snsmessage
 
 import (

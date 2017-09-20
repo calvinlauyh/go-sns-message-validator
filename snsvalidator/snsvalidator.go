@@ -1,3 +1,5 @@
+// Package snsvalidator is the core of SNS message validation. Its sole purpose
+// is to validate a SNS message matches its signature.
 package snsvalidator
 
 import (

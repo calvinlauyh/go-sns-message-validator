@@ -1,3 +1,5 @@
+// Package snserrors is a custom error with type and message. It provides
+// functions to manipulate errors.
 package snserrors
 
 // snsError is an private structure to record an SNS error
