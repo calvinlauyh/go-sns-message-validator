@@ -35,7 +35,7 @@ type SNSMessage struct {
 }
 
 // Create a SNSMessage from JSON-encoded SNS message
-func NewFromJSON(encoded []byte) (*SNSMessage, *snserrors.SNSError) {
+func NewFromJSON(encoded []byte) (*SNSMessage, error) {
 	message := &SNSMessage{}
 	err := json.Unmarshal(encoded, message)
 	if err != nil {

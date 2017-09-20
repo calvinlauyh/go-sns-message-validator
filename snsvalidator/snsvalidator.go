@@ -118,7 +118,7 @@ func NewV1(messageMap map[string]string) *SNSValidator {
 // If the certificate cannot be retrieved, it returns SNSError of
 // ErrInvalidCert
 // If the signature is incorrect, it returns SNSError of ErrIncorrectSignature
-func (validator *SNSValidator) ValidateMessage() *snserrors.SNSError {
+func (validator *SNSValidator) ValidateMessage() error {
 	if err := validator.validateMessageStructure(); err != nil {
 		return err
 	}
@@ -170,7 +170,7 @@ func (validator *SNSValidator) isTypes(typelist []string) bool {
 // required keys of a valid SNS message.
 // If one or more of the required keys are missing, it returns an SNSError of
 // type ErrMissingKey.
-func (validator *SNSValidator) validateRequiredKeys() *snserrors.SNSError {
+func (validator *SNSValidator) validateRequiredKeys() error {
 	if valid, missingKey := validator.hasKeys(requiredKeys); !valid {
 		return snserrors.New(
 			ErrMissingKey,
@@ -184,7 +184,7 @@ func (validator *SNSValidator) validateRequiredKeys() *snserrors.SNSError {
 // message types.
 // If the message is none of the valid types, it returns an SNSError of type
 // ErrInvalidType.
-func (validator *SNSValidator) validateMessageType() *snserrors.SNSError {
+func (validator *SNSValidator) validateMessageType() error {
 	if !validator.isTypes(validMessageTypes) {
 		return snserrors.New(
 			ErrInvalidType,
@@ -198,7 +198,7 @@ func (validator *SNSValidator) validateMessageType() *snserrors.SNSError {
 // the required keys of a Subscription message.
 // If one or more of the required keys are missing, it returns an SNSError of
 // type ErrMissingKey.
-func (validator *SNSValidator) validateSubscriptionKeys() *snserrors.SNSError {
+func (validator *SNSValidator) validateSubscriptionKeys() error {
 	if valid, missingKey := validator.hasKeys(requiredSubscriptionKeys); !valid {
 		return snserrors.New(
 			ErrMissingKey,
@@ -214,7 +214,7 @@ func (validator *SNSValidator) validateSubscriptionKeys() *snserrors.SNSError {
 // If the type is invalid, it returns SNSError of type ErrInvalidType
 // If one or more of the required keys are missing, it returns SNSError of type
 // ErrMissingKey
-func (validator *SNSValidator) validateMessageStructure() *snserrors.SNSError {
+func (validator *SNSValidator) validateMessageStructure() error {
 	if err := validator.validateRequiredKeys(); err != nil {
 		return err
 	}
@@ -261,7 +261,7 @@ func (validator *SNSValidator) buildSignableString() []byte {
 // the underlying SNS message, and returns the certifcate in slice of bytes.
 // If the HTTP request fails, it also returns a SNSError of type ErrInvalidCert
 // describing the error
-func (validator *SNSValidator) getCertificate() ([]byte, *snserrors.SNSError) {
+func (validator *SNSValidator) getCertificate() ([]byte, error) {
 	res, err := http.Get(validator.MessageMap["SigningCertURL"])
 	if err != nil {
 		return nil, snserrors.New(ErrInvalidCert, err.Error())
@@ -285,7 +285,7 @@ func (validator *SNSValidator) getCertificate() ([]byte, *snserrors.SNSError) {
 // ErrInvalidCert
 // If the signature is incorrect, it returns SNSError of type
 // ErrIncorrectSignature
-func (validator *SNSValidator) verifySignature() *snserrors.SNSError {
+func (validator *SNSValidator) verifySignature() error {
 	// Verify the SigningCertURL is trustworthy
 	parsedUrl, err := url.Parse(validator.MessageMap["SigningCertURL"])
 	if err != nil {
