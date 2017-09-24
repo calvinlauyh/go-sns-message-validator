@@ -8,14 +8,6 @@ import (
 	"github.com/yuhlau/go-sns-message-validator/snsvalidator"
 )
 
-// func shouldBeInnerTypeNil(actual interface{}, expected ...interface{}) string {
-//     if <some-important-condition-is-met(actual, expected)> {
-//         return ""   // empty string means the assertion passed
-//     } else {
-//         return "<some descriptive message detailing why the assertion failed...>"
-//     }
-// }
-
 // Message Template
 var NotificationMessage = SNSMessage{
 	Type:             "Notification",
